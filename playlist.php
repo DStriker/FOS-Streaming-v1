@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include('config.php');
 set_time_limit(0);
 error_reporting(0);
@@ -7,7 +8,7 @@ if (isset($_SERVER['HTTP_USER_AGENT'])) {
 }
 
 
-if (empty($_GET['username']) || empty($_GET['password'])) {
+if (!isset($_GET['username']) || !isset($_GET['password'])) {
     $error = "Username or Password is invalid";
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
     header('Status: 404 Not Found');
@@ -16,6 +17,9 @@ if (empty($_GET['username']) || empty($_GET['password'])) {
 
 $user = User::where('username', '=', $_GET['username'])->where('password', '=', $_GET['password'])->where('active', '=', 1)->first();
 if(!$user) {
+    $error = "Username or Password is invalid";
+    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+    header('Status: 404 Not Found');
     die();
 }
 
@@ -34,6 +38,9 @@ if(isset($_GET['e2'])) {
     }
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename="userbouquet.favourites.tv"');
+    header("Content-Transfer-Encoding: binary");
+    header('Pragma: no-cache');
+    header('Expires: 0');
     die;
 }
 
@@ -54,6 +61,9 @@ if(isset($_GET['m3u'])) {
     }
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename="tv_user.m3u"');
+    header("Content-Transfer-Encoding: binary");
+    header('Pragma: no-cache');
+    header('Expires: 0');
     die;
     }
 
@@ -77,6 +87,9 @@ if(isset($_GET['allfrtvwindows'])) {
     echo "</channel>\r\n";  
     header('Content-Type: text/xml');
     header('Content-Disposition: attachment; filename="allfrtvwindows.xml"');
+    header("Content-Transfer-Encoding: binary");
+    header('Pragma: no-cache');
+    header('Expires: 0');
     die;
 }
 
