@@ -163,6 +163,7 @@ if(trim($arch) == "x86_64") {
     shell_exec("apt-get install -y --force-yes xtrans-dev > /dev/null 2>&1");
     shell_exec("apt-get install -y --force-yes zlib1g-dev > /dev/null 2>&1");
     shell_exec("apt-get install -y --force-yes php5-fpm  > /dev/null 2>&1");
+    shell_exec("apt-get install unzip > /dev/null 2>&1");
     echo "]PASS \n";
     echo "4. [FOS-Panel Installation:] ";
     echo " [#";
@@ -178,7 +179,9 @@ if(trim($arch) == "x86_64") {
     shell_exec("/bin/rm -r /home/fos-streaming/fos-streaming_unpack_x84_64.tar.gz  > /dev/null 2>&1");
     shell_exec("/bin/mkdir /usr/src/FOS-Streaming > /dev/null 2>&1");
     echo "##";
-    shell_exec("git clone https://github.com/andykimpe/FOS-Streaming-v1.git /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("wget https://github.com/DStriker/FOS-Streaming-v2.0-UNOFFICIAL-/archive/master.zip /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("unzip /usr/src/FOS-Streaming/master.zip -d /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("rm /usr/src/FOS-Streaming/master.zip > /dev/null 2>&1");
     shell_exec("/bin/mv /usr/src/FOS-Streaming/* /home/fos-streaming/fos/www/ > /dev/null 2>&1");
     #shell_exec("wget https://getcomposer.org/installer -O /usr/src/installer  > /dev/null 2>&1");
     #shell_exec("/usr/bin/php /usr/src/installer > /dev/null 2>&1");
@@ -189,11 +192,9 @@ if(trim($arch) == "x86_64") {
     shell_exec("echo 'www-data ALL = (root) NOPASSWD: /usr/local/bin/ffprobe' >> /etc/sudoers");
     shell_exec("echo '*/2 * * * * www-data /home/fos-streaming/fos/php/bin/php /home/fos-streaming/fos/www/cron.php' >> /etc/crontab");
     echo "#";
-    shell_exec("sed --in-place '/exit 0/d' /etc/rc.local");
-    shell_exec("echo 'sleep 10' >> /etc/rc.local");
-    shell_exec("echo '/home/fos-streaming/fos/nginx/sbin/nginx_fos' >> /etc/rc.local");
-    shell_exec("echo '/home/fos-streaming/fos/php/sbin/php-fpm' >> /etc/rc.local");
-    shell_exec("echo 'exit 0' >> /etc/rc.local");
+    shell_exec("/bin/mv /home/fos-streaming/fos/www/fos /etc/init.d  > /dev/null 2>&1");
+    shell_exec("chmod -R 777 /etc/init.d/fos > /dev/null 2>&1");
+    shell_exec("update-rc.d /etc/init.d/fos defaults 80 > /dev/null 2>&1");
     echo "#";
     shell_exec("/bin/mkdir /home/fos-streaming/fos/www/hl  > /dev/null 2>&1");
     shell_exec("chmod -R 777 /home/fos-streaming/fos/www/hl  > /dev/null 2>&1");
@@ -213,7 +214,7 @@ if(trim($arch) == "x86_64") {
     shell_exec("chmod 755 /usr/local/bin/ffmpeg  > /dev/null 2>&1");
     shell_exec("chmod 755 /usr/local/bin/ffprobe  > /dev/null 2>&1");
     echo "#";
-    shell_exec("chown www-data:root /usr/local/nginx/html  > /dev/null 2>&1");
+    shell_exec("chown www-data:root /home/fos-streaming/fos/www  > /dev/null 2>&1");
     echo "#";
 #shell_exec("/bin/rm -r /usr/src/ffmpeg  > /dev/null 2>&1");
 #shell_exec("/bin/rm -r /home/fos-streaming/ffmpeg-release-64bit-static.tar.xz   > /dev/null 2>&1");
@@ -370,7 +371,9 @@ elseif(trim($arch) == "i686") {
     shell_exec("/bin/rm -r /home/fos-streaming/fos-streaming_unpack_i686.tar.gz  > /dev/null 2>&1");
     shell_exec("/bin/mkdir /usr/src/FOS-Streaming > /dev/null 2>&1");
     echo "##";
-    shell_exec("git clone https://github.com/andykimpe/FOS-Streaming-v1.git /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("wget https://github.com/DStriker/FOS-Streaming-v2.0-UNOFFICIAL-/archive/master.zip /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("unzip /usr/src/FOS-Streaming/master.zip -d /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("rm /usr/src/FOS-Streaming/master.zip > /dev/null 2>&1");
     shell_exec("/bin/mv /usr/src/FOS-Streaming/* /home/fos-streaming/fos/www/ > /dev/null 2>&1");
     #shell_exec("wget https://getcomposer.org/installer -O /usr/src/installer  > /dev/null 2>&1");
     #shell_exec("/usr/bin/php /usr/src/installer > /dev/null 2>&1");
@@ -381,11 +384,9 @@ elseif(trim($arch) == "i686") {
     shell_exec("echo 'www-data ALL = (root) NOPASSWD: /usr/local/bin/ffprobe' >> /etc/sudoers");
     shell_exec("echo '*/2 * * * * www-data /home/fos-streaming/fos/php/bin/php /home/fos-streaming/fos/www/cron.php' >> /etc/crontab");
     echo "#";
-    shell_exec("sed --in-place '/exit 0/d' /etc/rc.local");
-    shell_exec("echo 'sleep 10' >> /etc/rc.local");
-    shell_exec("echo '/home/fos-streaming/fos/nginx/sbin/nginx_fos' >> /etc/rc.local");
-    shell_exec("echo '/home/fos-streaming/fos/php/sbin/php-fpm' >> /etc/rc.local");
-    shell_exec("echo 'exit 0' >> /etc/rc.local");
+    shell_exec("/bin/mv /home/fos-streaming/fos/www/fos /etc/init.d  > /dev/null 2>&1");
+    shell_exec("chmod -R 777 /etc/init.d/fos > /dev/null 2>&1");
+    shell_exec("update-rc.d /etc/init.d/fos defaults 80 > /dev/null 2>&1");
     echo "#";
     shell_exec("/bin/mkdir /home/fos-streaming/fos/www/hl  > /dev/null 2>&1");
     shell_exec("chmod -R 777 /home/fos-streaming/fos/www/hl  > /dev/null 2>&1");
@@ -405,7 +406,7 @@ elseif(trim($arch) == "i686") {
     shell_exec("chmod 755 /usr/local/bin/ffmpeg  > /dev/null 2>&1");
     shell_exec("chmod 755 /usr/local/bin/ffprobe  > /dev/null 2>&1");
     echo "#";
-    shell_exec("chown www-data:root /usr/local/nginx/html  > /dev/null 2>&1");
+    shell_exec("chown www-data:root /home/fos-streaming/fos/www  > /dev/null 2>&1");
     echo "#";
 #shell_exec("/bin/rm -r /usr/src/ffmpeg");
 #shell_exec("/bin/rm -r /home/fos-streaming/ffmpeg-release-32bit-static.tar.xz   > /dev/null 2>&1");
