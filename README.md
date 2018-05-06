@@ -19,7 +19,7 @@
 
 ## Installation options:
 ### Option 1: Fresh installation
-1. `wget http://fos-streaming.com/fresh_install.sh`
+1. `wget https://raw.githubusercontent.com/DStriker/FOS-Streaming-v2.0-UNOFFICIAL-/master/fresh_install.sh`
 2. `chmod 755 fresh_install.sh`
 3. `./fresh_install.sh`
 
