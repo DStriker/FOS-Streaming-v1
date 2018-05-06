@@ -1,0 +1,3 @@
+#!/bin/sh
+/home/fos-streaming/fos/nginx/sbin/nginx_fos
+/home/fos-streaming/fos/php/sbin/php-fpm
