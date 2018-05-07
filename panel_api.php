@@ -40,7 +40,7 @@ echo "Expire Date: " . $user->exp_date  . "<br>";
 echo "Max Connections: " . $user->max_connections . "<br>";
 echo "Active Connections: " . $user->activity()->where('date_end', '=', NULL)->get . "<br>";
 echo $user->laststream->get;                                                                            
-echo "M3U Address: http://185.174.173.103:8000/playlist.php?username=". $user->username . "&password=" $
+echo "M3U Address: http://ip:port/playlist.php?username=". $user->username . "&password=" . $user->password . "&m3u <br>";
 echo "Channels List: <br>";
 foreach($user->categories as $category) {
 foreach($category->streams as $stream) {
