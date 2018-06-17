@@ -194,7 +194,7 @@ if(trim($arch) == "x86_64") {
     echo "#";
     shell_exec("/bin/mv /home/fos-streaming/fos/www/fos /etc/init.d  > /dev/null 2>&1");
     shell_exec("chmod -R 777 /etc/init.d/fos > /dev/null 2>&1");
-    shell_exec("update-rc.d /etc/init.d/fos defaults 80 > /dev/null 2>&1");
+    shell_exec("update-rc.d fos defaults 80 > /dev/null 2>&1");
     echo "#";
     shell_exec("/bin/mkdir /home/fos-streaming/fos/www/hl  > /dev/null 2>&1");
     shell_exec("chmod -R 777 /home/fos-streaming/fos/www/hl  > /dev/null 2>&1");
