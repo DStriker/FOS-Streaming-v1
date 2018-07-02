@@ -179,7 +179,7 @@ if(trim($arch) == "x86_64") {
     shell_exec("/bin/rm -r /home/fos-streaming/fos-streaming_unpack_x84_64.tar.gz  > /dev/null 2>&1");
     shell_exec("/bin/mkdir /usr/src/FOS-Streaming > /dev/null 2>&1");
     echo "##";
-    shell_exec("wget https://github.com/DStriker/FOS-Streaming-v2.0-UNOFFICIAL-/archive/master.zip /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("wget https://github.com/DStriker/FOS-Streaming-v2.0-UNOFFICIAL-/archive/master.zip -O /usr/src/FOS-Streaming/ > /dev/null 2>&1");
     shell_exec("unzip /usr/src/FOS-Streaming/master.zip -d /usr/src/FOS-Streaming/ > /dev/null 2>&1");
     shell_exec("rm /usr/src/FOS-Streaming/master.zip > /dev/null 2>&1");
     shell_exec("/bin/mv /usr/src/FOS-Streaming/* /home/fos-streaming/fos/www/ > /dev/null 2>&1");
@@ -371,7 +371,7 @@ elseif(trim($arch) == "i686") {
     shell_exec("/bin/rm -r /home/fos-streaming/fos-streaming_unpack_i686.tar.gz  > /dev/null 2>&1");
     shell_exec("/bin/mkdir /usr/src/FOS-Streaming > /dev/null 2>&1");
     echo "##";
-    shell_exec("wget https://github.com/DStriker/FOS-Streaming-v2.0-UNOFFICIAL-/archive/master.zip /usr/src/FOS-Streaming/ > /dev/null 2>&1");
+    shell_exec("wget https://github.com/DStriker/FOS-Streaming-v2.0-UNOFFICIAL-/archive/master.zip -O /usr/src/FOS-Streaming/ > /dev/null 2>&1");
     shell_exec("unzip /usr/src/FOS-Streaming/master.zip -d /usr/src/FOS-Streaming/ > /dev/null 2>&1");
     shell_exec("rm /usr/src/FOS-Streaming/master.zip > /dev/null 2>&1");
     shell_exec("/bin/mv /usr/src/FOS-Streaming/* /home/fos-streaming/fos/www/ > /dev/null 2>&1");
