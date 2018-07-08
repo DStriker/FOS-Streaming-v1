@@ -38,7 +38,7 @@ if($user->exp_date != "0000-00-00") {
 }                                                                                                       
 echo "Expire Date: " . $user->exp_date  . "<br>";
 echo "Max Connections: " . $user->max_connections . "<br>";
-echo "Active Connections: " . $user->activity()->where('date_end', '=', NULL)->get . "<br>";
+echo "Active Connections: " . $user->activity()->where('date_end', '=', NULL)->get()->count() . "<br>";
 echo $user->laststream->get;                                                                            
 echo "M3U Address: http://ip:port/playlist.php?username=". $user->username . "&password=" . $user->password . "&m3u <br>";
 echo "Channels List: <br>";
