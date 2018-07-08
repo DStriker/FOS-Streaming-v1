@@ -12,7 +12,7 @@ if (!isset($_GET['username']) || !isset($_GET['password'])) {
     die();
 }                                                                                                       
                                                                                                         
-$user = User::where('username', '=', $_GET['username'])->where('password', '=', $_GET['password'])->fir$
+$user = User::where('username', '=', $_GET['username'])->where('password', '=', $_GET['password'])->first();
 if(!$user) {
     $error = "Username or Password is invalid";
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
